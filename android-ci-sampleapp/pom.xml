@@ -40,9 +40,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -65,6 +62,50 @@
 									<goal>kamino</goal>
 								</goals>
 								<phase>install</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>analyze</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>findbugs-maven-plugin</artifactId>
+						<version>2.5.2</version>
+						<configuration>
+							<threshold>High</threshold>
+							<excludeFilterFile>${project.basedir}/findbugs-filter.xml</excludeFilterFile>
+							<onlyAnalyze>org.androidci.sample.-</onlyAnalyze>
+						</configuration>
+						<executions>
+							<execution>
+								<id>findbugs-check</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-pmd-plugin</artifactId>
+						<version>3.0.1</version>
+						<configuration>
+							<targetJdk>1.5</targetJdk>
+							<failOnViolation>false</failOnViolation>
+						</configuration>
+						<executions>
+							<execution>
+								<id>pmd-check</id>
+								<goals>
+									<goal>check</goal>
+									<goal>cpd-check</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>

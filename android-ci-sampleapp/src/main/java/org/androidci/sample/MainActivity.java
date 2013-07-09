@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
                 greetingsTextField.setText(helloWord);
             }
         });
+        int unusedVar;
     }
 
 }
