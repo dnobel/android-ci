@@ -43,23 +43,33 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.kaminodroid</groupId>
-				<artifactId>kaminodroid-mojo</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
-				<configuration>
-					<url>http://foomla.de:7070</url>
-				</configuration>
-				<executions>
-					<execution>
-						<id>deploy-apk</id>
-						<goals>
-							<goal>kamino</goal>
-						</goals>
-						<phase>install</phase>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>distribute</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.kaminodroid</groupId>
+						<artifactId>kaminodroid-mojo</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+						<configuration>
+							<url>http://foomla.de:7070</url>
+						</configuration>
+						<executions>
+							<execution>
+								<id>distribute-apk</id>
+								<goals>
+									<goal>kamino</goal>
+								</goals>
+								<phase>install</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
