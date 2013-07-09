@@ -6,8 +6,9 @@
 *.war
 *.ear
 
-# Eclipse/maven Files #
+# Eclipse/maven/gradle Files #
 target/
+.gradle
 bin/
 .project
 .metadata
