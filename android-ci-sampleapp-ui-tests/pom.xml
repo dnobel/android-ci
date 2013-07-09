@@ -6,6 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>android-ci-sampleapp-ui-tests</artifactId>
+	<name>Android CI Sample UI Tests</name>
 
 	<parent>
 		<groupId>org.androidci</groupId>
@@ -39,7 +40,6 @@
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>android</artifactId>
-			<version>${android.platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -58,16 +58,26 @@
 	<build>
 		<plugins>
 			<plugin>
-				<extensions>true</extensions>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
-				<version>3.6.0</version>
-				<configuration>
-					<sdk>
-						<platform>${android.sdk.version}</platform>
-					</sdk>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>skipUiTests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

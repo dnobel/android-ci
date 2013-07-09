@@ -8,6 +8,7 @@
 	<artifactId>android-ci-parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>Android CI Sample Parent</name>
 
 	<properties>
 		<java.version>1.6</java.version>
@@ -32,4 +33,39 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.6.0</version>
+					<extensions>true</extensions>
+					<configuration>
+						<sdk>
+							<platform>${android.sdk.version}</platform>
+						</sdk>
+						<lint>
+							<skip>false</skip>
+							<failOnError>true</failOnError>
+						</lint>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.15</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
