@@ -70,10 +70,12 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
 						<configuration>
-							<skipTests>true</skipTests>
+						    <test>
+						        <skip>true</skip>
+						    </test>
 						</configuration>
 					</plugin>
 				</plugins>
