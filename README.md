@@ -44,18 +44,26 @@ How to Use
 
 Checkout git project:
 
-> git checkout https://github.com/dnobel/android-ci.git
-> cd android-ci
-
+    git checkout https://github.com/dnobel/android-ci.git
+    cd android-ci
 
 Building the app and run unit tests (without UI tests):
  
-> mvn install -PskipUiTests
+    mvn install -PskipUiTests
+
+Building, installing and running the app to an emulator or device:
+ 
+    mvn install android:deploy android:run
 
 Building the app and execute PMD and findbugs analysis:
  
-> mvn install -PskipUiTests -Panalyze
+    mvn install -PskipUiTests -Panalyze
 
 Building the app and execute unit and UI tests (emulator or device must be connected to the ADB):
  
-> mvn install
+    mvn install
+
+Building the app with gradle:
+
+    cd android-ci-sampleapp
+    gradle build
